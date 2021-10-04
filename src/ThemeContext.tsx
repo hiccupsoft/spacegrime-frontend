@@ -2,8 +2,11 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { ThemeProvider as SCThemeProvider } from 'styled-components'
 import { light, dark } from '@pancakeswap-libs/uikit'
 
-const CACHE_KEY = 'IS_DARK'
+import { useDispatch} from 'react-redux'
+import { AppDispatch } from './state/index'
+import { updateIsDarkMode } from "./state/user/actions"
 
+const CACHE_KEY = 'IS_DARK'
 export interface ThemeContextType {
   isDark: boolean;
   toggleTheme: () => void;
@@ -12,11 +15,13 @@ export interface ThemeContextType {
 const ThemeContext = React.createContext<ThemeContextType>({ isDark: false, toggleTheme: () => null })
 
 const ThemeContextProvider: React.FC = ({ children }) => {
+  const dispatch = useDispatch<AppDispatch>()
   const [isDark, setIsDark] = useState(() => {
     const isDarkUserSetting = localStorage.getItem(CACHE_KEY)
     return isDarkUserSetting ? JSON.parse(isDarkUserSetting) : false
   })
 
+  console.log(isDark);
   const handleSetup = useCallback(event=>{
     if(event && event.data && typeof event.data === "string" && event.data.startsWith("[iFrameSizer]message:")){
       const dataStr = event.data.substring("[iFrameSizer]message:".length);
@@ -34,6 +39,7 @@ const ThemeContextProvider: React.FC = ({ children }) => {
 
   const toggleTheme = () => {
     setIsDark((prevState: any) => {
+      dispatch(updateIsDarkMode({ isDarkMode : !prevState }))
       localStorage.setItem(CACHE_KEY, JSON.stringify(!prevState))
       return !prevState
     })

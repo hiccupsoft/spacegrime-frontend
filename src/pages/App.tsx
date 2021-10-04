@@ -2,6 +2,7 @@ import React, { Suspense, useEffect, useState } from 'react'
 import { HashRouter, Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
 // import { Credentials, StringTranslations } from '@crowdin/crowdin-api-client'
+import { useSelector } from "react-redux";
 import Popups from '../components/Popups'
 import Web3ReactManager from '../components/Web3ReactManager'
 import AddLiquidity from './AddLiquidity'
@@ -23,7 +24,8 @@ import { RedirectPathToSwapOnly, RedirectToSwap } from './Swap/redirects'
 import { EN, allLanguages } from '../constants/localisation/languageCodes'
 import { LanguageContext } from '../hooks/LanguageContext'
 import { TranslationsContext } from '../hooks/TranslationsContext'
-
+import LightBG from '../assets/Backgrounds/Exchange-Swap background (Light).png'
+import DarkBG from '../assets/Backgrounds/Exchange-Swap background (Dark).png'
 import Menu from '../components/Menu'
 
 const AppWrapper = styled.div`
@@ -33,23 +35,6 @@ const AppWrapper = styled.div`
   overflow-x: hidden;
 `
 
-const BodyWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 32px 16px;
-  min-height: calc(100vh - 152px);
-  align-items: center;
-  flex: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
-  z-index: 1;
-
-  background-image: url('/static/media/bg.bfd323f2.png');
-  background-repeat: no-repeat;
-  background-position: top;
-  background-size: contain;
-`
 
 const Marginer = styled.div`
   margin-top: 5rem;
@@ -59,6 +44,18 @@ export default function App() {
   const [selectedLanguage, setSelectedLanguage] = useState<any>(undefined)
   const [translatedLanguage, setTranslatedLanguage] = useState<any>(undefined)
   const [translations, setTranslations] = useState<Array<any>>([])
+  const mode = useSelector<any>((state) => state.user.isDarkMode );
+  const [bodyWrapper, setbodyWrapper] = useState(`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 120px 16px;
+    min-height: 100vh;
+    align-items: center;
+    z-index: 1;
+    background-repeat: no-repeat;
+    background-size: cover;
+  `)
   // const apiKey = `${process.env.REACT_APP_CROWDIN_APIKEY}`
   // const projectId = parseInt(`${process.env.REACT_APP_CROWDIN_PROJECTID}`)
   // const fileId = 6
@@ -108,6 +105,8 @@ export default function App() {
   //   }
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [selectedLanguage])
+  
+  const BodyWrapper = styled.div`${bodyWrapper};background-image : url('${mode ? DarkBG : LightBG}');`
 
   return (
     <Suspense fallback={null}>
@@ -118,7 +117,7 @@ export default function App() {
           >
             <TranslationsContext.Provider value={{ translations, setTranslations }}>
               <Menu>
-                <BodyWrapper>
+                <BodyWrapper style={{backgroundImage : `url('${mode ? DarkBG : LightBG}');`}}>
                   <Popups />
                   <Web3ReactManager>
                     <Switch>

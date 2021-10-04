@@ -73,7 +73,6 @@ export function useDarkModeManager(): [boolean, () => void] {
     setThemeCache(!userDarkMode)
     dispatch(updateUserDarkMode({ userDarkMode: !userDarkMode }))
   }, [userDarkMode, dispatch])
-
   return [darkMode, toggleSetDarkMode]
 }
 

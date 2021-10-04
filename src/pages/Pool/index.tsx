@@ -12,6 +12,7 @@ import { StyledInternalLink, TYPE } from 'components/Shared'
 import { LightCard } from 'components/Card'
 import { RowBetween } from 'components/Row'
 import { AutoColumn } from 'components/Column'
+import { useSelector } from "react-redux";
 
 import { useActiveWeb3React } from 'hooks'
 import { usePairs } from 'data/Reserves'
@@ -21,13 +22,15 @@ import TranslatedText from 'components/TranslatedText'
 import { TranslateString } from 'utils/translateTextHelpers'
 import PageHeader from 'components/PageHeader'
 import AppBody from '../AppBody'
+import DarkLogo from "../../assets/Logo/SpaceGrime Text Logo (Dark).png"
+import LightLogo from "../../assets/Logo/SpaceGrime Text Logo (Light).png"
 
 const { body: Body } = TYPE
 
 export default function Pool() {
   const theme = useContext(ThemeContext)
   const { account } = useActiveWeb3React()
-
+  const mode = useSelector<any>((state) => state.user.isDarkMode );
   // fetch the user's balances of all tracked V2 LP tokens
   const trackedTokenPairs = useTrackedTokenPairs()
   const tokenPairsWithLiquidityTokens = useMemo(
@@ -61,18 +64,19 @@ export default function Pool() {
 
   return (
     <>
+      <img src={`${mode ? LightLogo : DarkLogo}`} alt="" width="20%" style={{marginBottom: '80px'}}/>
       <CardNav activeIndex={1} />
       <AppBody>
-        <PageHeader title="Liquidity" description="Add liquidity to receive LP tokens">
-          <Button id="join-pool-button" as={Link} to="/add/ETH">
-            <TranslatedText translationId={100}>Add Liquidity</TranslatedText>
+        <PageHeader title="" description="">
+          <Button id="join-pool-button" as={Link} to="/add/ETH" style={{    background: '#1c8ffe', borderRadius: '50px'}}>
+            <TranslatedText translationId={100}>ADD LIQUIDITY</TranslatedText>
           </Button>
         </PageHeader>
         <AutoColumn gap="lg" justify="center">
           <CardBody>
             <AutoColumn gap="12px" style={{ width: '100%' }}>
               <RowBetween padding="0 8px">
-                <Text color={theme.colors.text}>
+                <Text color='#7f7fa2' style={{textAlign: 'center'}}>
                   <TranslatedText translationId={102}>Your Liquidity</TranslatedText>
                 </Text>
                 <Question
@@ -84,8 +88,8 @@ export default function Pool() {
               </RowBetween>
 
               {!account ? (
-                <LightCard padding="40px">
-                  <Body color={theme.colors.textDisabled} textAlign="center">
+                <LightCard style={{    background: '#dadbe6', border: 'none'}} >
+                  <Body style={{color: '#78789b'}} textAlign="center">
                     Connect to a wallet to view your liquidity.
                   </Body>
                 </LightCard>
@@ -118,8 +122,8 @@ export default function Pool() {
                     {hasV1Liquidity ? 'Migrate now.' : TranslateString(108, 'Import it.')}
                   </StyledInternalLink>
                 </Text>
-                <Text fontSize="14px" style={{ padding: '.5rem 0 .5rem 0' }}>
-                  Or, if you staked your LP tokens in a farm, unstake them to see them here.
+                <Text fontSize="14px" color='#7f7fa2' style={{textAlign: 'center', padding: '.5rem 0 .5rem 0' }}>
+                  Dont see a pool you joined? <span style={{color:'#f94ec8'}}>Improve it.</span>
                 </Text>
               </div>
             </AutoColumn>
