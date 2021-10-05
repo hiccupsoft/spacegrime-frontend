@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { ThemeProvider as SCThemeProvider } from 'styled-components'
-import { light, dark } from '@pancakeswap-libs/uikit'
+import { light, dark } from 'spacegrime-uikit'
 
 import { useDispatch} from 'react-redux'
 import { AppDispatch } from './state/index'
