@@ -9,6 +9,7 @@ export const BodyWrapper = styled(Card)`
   z-index: 5;
   background: transparent;
   box-shadow: none;
+  text-align: center;
 `
 
 /**

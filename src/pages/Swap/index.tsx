@@ -293,7 +293,10 @@ const Swap = () => {
         transactionType={syrupTransactionType}
         onConfirm={handleConfirmSyrupWarning}
       />
-      <CardNav />
+      <div style={{display: 'flex'}}>
+        <CardNav />
+        <PageHeader title="Exchange" description="Trade tokens in an instant"/>
+      </div>
       <AppBody>
         <Wrapper id="swap-page">
           <ConfirmSwapModal
@@ -309,7 +312,6 @@ const Swap = () => {
             swapErrorMessage={swapErrorMessage}
             onDismiss={handleConfirmDismiss}
           />
-          <PageHeader title="Exchange" description="Trade tokens in an instant" />
           <CardBody>
             <AutoColumn gap="md">
               <CurrencyInputPanel

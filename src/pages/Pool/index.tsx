@@ -1,5 +1,5 @@
 import React, { useContext, useMemo } from 'react'
-import { ThemeContext } from 'styled-components'
+import styled,  { ThemeContext } from 'styled-components'
 import { Pair } from '@pancakeswap-libs/sdk'
 import { Button, CardBody, Text } from 'spacegrime-uikit'
 import { Link } from 'react-router-dom'
@@ -22,15 +22,12 @@ import TranslatedText from 'components/TranslatedText'
 import { TranslateString } from 'utils/translateTextHelpers'
 import PageHeader from 'components/PageHeader'
 import AppBody from '../AppBody'
-import DarkLogo from "../../assets/Logo/SpaceGrime Text Logo (Dark).png"
-import LightLogo from "../../assets/Logo/SpaceGrime Text Logo (Light).png"
 
 const { body: Body } = TYPE
 
 export default function Pool() {
   const theme = useContext(ThemeContext)
   const { account } = useActiveWeb3React()
-  const mode = useSelector<any>((state) => state.user.isDarkMode );
   // fetch the user's balances of all tracked V2 LP tokens
   const trackedTokenPairs = useTrackedTokenPairs()
   const tokenPairsWithLiquidityTokens = useMemo(
@@ -62,16 +59,21 @@ export default function Pool() {
 
   const hasV1Liquidity = useUserHasLiquidityInAllTokens()
 
+  const CustomNavDiv = styled.div`
+    display: flex;
+    align-item: center;
+  `
+
   return (
     <>
-      <img src={`${mode ? LightLogo : DarkLogo}`} alt="" width="20%" style={{marginBottom: '80px'}}/>
-      <CardNav activeIndex={1} />
       <AppBody>
-        <PageHeader title="" description="">
-          <Button id="join-pool-button" as={Link} to="/add/ETH" style={{    background: '#1c8ffe', borderRadius: '50px'}}>
-            <TranslatedText translationId={100}>ADD LIQUIDITY</TranslatedText>
-          </Button>
-        </PageHeader>
+        <CustomNavDiv>
+          <CardNav activeIndex={1} />
+          {/* <PageHeader title="" description="" /> */}
+        </CustomNavDiv>
+        <Button id="join-pool-button" as={Link} to="/add/ETH" style={{    background: '#1c8ffe', borderRadius: '50px'}}>
+          <TranslatedText translationId={100}>ADD LIQUIDITY</TranslatedText>
+        </Button>
         <AutoColumn gap="lg" justify="center">
           <CardBody>
             <AutoColumn gap="12px" style={{ width: '100%' }}>

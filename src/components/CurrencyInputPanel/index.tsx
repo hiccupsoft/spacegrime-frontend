@@ -72,7 +72,7 @@ const InputPanel = styled.div<{ hideInput?: boolean }>`
 const Container = styled.div<{ hideInput: boolean }>`
   border-radius: 16px;
   background-color: ${({ theme }) => theme.colors.input};
-  box-shadow: ${({ theme }) => theme.shadows.inset};
+  box-shadow: 3px 2px 20px #b3aeaead;
 `
 
 interface CurrencyInputPanelProps {
@@ -133,6 +133,7 @@ export default function CurrencyInputPanel({
             </RowBetween>
           </LabelRow>
         )}
+        <Text style={{color: '#6f7099',padding: '0px 16px', textAlign: 'left'}}>Input</Text>
         <InputRow style={hideInput ? { padding: '0', borderRadius: '8px' } : {}} selected={disableCurrencySelect}>
           {!hideInput && (
             <>

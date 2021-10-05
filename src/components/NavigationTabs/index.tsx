@@ -73,6 +73,8 @@ const StyledNavLink = styled(NavLink).attrs({
 const ActiveText = styled.div`
   font-weight: 500;
   font-size: 20px;
+  width: 100%;
+  text-align: center;
 `
 
 const StyledArrowLeft = styled(ArrowLeft)`
@@ -133,17 +135,17 @@ export function AddRemoveTabs({ adding }: { adding: boolean }) {
   return (
     <Tabs>
       <RowBetween style={{ padding: '1rem' }}>
-        <HistoryLink to="/pool">
+        {/* <HistoryLink to="/pool">
           <StyledArrowLeft />
-        </HistoryLink>
+        </HistoryLink> */}
         <ActiveText>{adding ? 'Add' : 'Remove'} Liquidity</ActiveText>
-        <QuestionHelper
+        {/* <QuestionHelper
           text={
             adding
               ? 'When you add liquidity, you are given pool tokens representing your position. These tokens automatically earn fees proportional to your share of the pool, and can be redeemed at any time.'
               : 'Removing pool tokens converts your position back into underlying tokens at the current rate, proportional to your share of the pool. Accrued fees are included in the amounts you receive.'
           }
-        />
+        /> */}
       </RowBetween>
     </Tabs>
   )
