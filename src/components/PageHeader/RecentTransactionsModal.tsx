@@ -39,8 +39,12 @@ const RecentTransactionsModal = ({ onDismiss = defaultOnDismiss }: RecentTransac
     return txs.filter(isTransactionRecent).sort(newTransactionsFirst)
   }, [allTransactions])
 
+  const handleOnBack = () => {
+    return 1;
+  };
+
   return (
-    <Modal title="Recent Transactions" onDismiss={onDismiss}>
+    <Modal title="Recent Transactions" onDismiss={onDismiss} onBack={handleOnBack} hideCloseButton>
       <Text color="#ED4B9E" fontSize="40px" style={{ fontWeight: 400,textAlign: 'right' }}>
         Recent
       </Text>
@@ -52,9 +56,9 @@ const RecentTransactionsModal = ({ onDismiss = defaultOnDismiss }: RecentTransac
           <Text mb="8px" bold>
             Please connect your wallet to view your recent transactions
           </Text>
-          <Button variant="tertiary" size="sm" onClick={onDismiss}>
+          {/* <Button variant="tertiary" size="sm" onClick={onDismiss}>
             Close
-          </Button>
+          </Button> */}
         </Flex>
       )}
       {account && chainId && sortedRecentTransactions.length === 0 && (
@@ -62,9 +66,9 @@ const RecentTransactionsModal = ({ onDismiss = defaultOnDismiss }: RecentTransac
           <Text mb="8px" bold>
             No recent transactions
           </Text>
-          <Button variant="tertiary" size="sm" onClick={onDismiss}>
+          {/* <Button variant="tertiary" size="sm" onClick={onDismiss}>
             Close
-          </Button>
+          </Button> */}
         </Flex>
       )}
       {account &&
@@ -84,6 +88,9 @@ const RecentTransactionsModal = ({ onDismiss = defaultOnDismiss }: RecentTransac
             </>
           )
         })}
+      <Text onClick={onDismiss} style={{textAlign: 'right',color: '#fff', cursor: 'pointer'}}>
+        CLOSE POPUP
+      </Text>
     </Modal>
   )
 }

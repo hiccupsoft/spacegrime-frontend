@@ -152,6 +152,7 @@ export default function CurrencyInputPanel({
             </>
           )}
           <CurrencySelect
+            style={{    background: 'linear-gradient(272deg, #80ffc4, #aeffb0)'}}
             selected={!!currency}
             className="open-currency-select-button"
             onClick={() => {

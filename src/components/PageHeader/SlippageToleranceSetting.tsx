@@ -103,7 +103,7 @@ const SlippageToleranceSettings = () => {
 
             return (
               <Option key={predefinedValue}>
-                <Button style={{ minWidth: '64px',   padding: '20px 13px', background: index === 1 ? '#3e4377' : ''}} size="sm" variant={value === predefinedValue ? 'primary' : index === 0 ? 'danger' : index === 2 ? 'primary' : 'primary'} onClick={handleClick}>
+                <Button style={{fontSize: '10px', minWidth: '43px',   padding: '15px 3px', background: index === 1 ? '#3e4377' : ''}} size="sm" variant={value === predefinedValue ? 'primary' : index === 0 ? 'danger' : index === 2 ? 'primary' : 'primary'} onClick={handleClick}>
                   {label}
                 </Button>
               </Option>
