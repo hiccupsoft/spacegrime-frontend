@@ -41,6 +41,12 @@ const RecentTransactionsModal = ({ onDismiss = defaultOnDismiss }: RecentTransac
 
   return (
     <Modal title="Recent Transactions" onDismiss={onDismiss}>
+      <Text color="#ED4B9E" fontSize="40px" style={{ fontWeight: 400,textAlign: 'right' }}>
+        Recent
+      </Text>
+      <Text color="#FFF" fontSize="40px" style={{ fontWeight: 400,textAlign: 'right' }}>
+      Transactions
+      </Text>
       {!account && (
         <Flex justifyContent="center" flexDirection="column" alignItems="center">
           <Text mb="8px" bold>

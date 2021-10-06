@@ -82,30 +82,38 @@ const SlippageToleranceSettings = () => {
   }, [userSlippageTolerance, setError])
 
   return (
+    <div>
+      <Text color="#ED4B9E" fontSize="40px" style={{ fontWeight: 400,textAlign: 'right' }}>
+        Transaction
+      </Text>
+      <Text color="#FFF" fontSize="40px" style={{ fontWeight: 400,textAlign: 'right' }}>
+        Settings
+      </Text>
+    
     <StyledSlippageToleranceSettings>
       <Label>
-        <Text style={{ fontWeight: 600 }}>
+        <Text style={{ fontWeight: 400 }}>
           <TranslatedText translationId={88}>Slippage tolerance</TranslatedText>
         </Text>
-        <QuestionHelper text="Your transaction will revert if the price changes unfavorably by more than this percentage." />
       </Label>
       <Options>
         <Flex mb={['8px', 0]} mr={[0, '8px']}>
-          {predefinedValues.map(({ label, value: predefinedValue }) => {
+          {predefinedValues.map(({ label, value: predefinedValue },index:number) => {
             const handleClick = () => setValue(predefinedValue)
 
             return (
               <Option key={predefinedValue}>
-                <Button variant={value === predefinedValue ? 'primary' : 'tertiary'} onClick={handleClick}>
+                <Button style={{ minWidth: '64px',   padding: '20px 13px', background: index === 1 ? '#3e4377' : ''}} size="sm" variant={value === predefinedValue ? 'primary' : index === 0 ? 'danger' : index === 2 ? 'primary' : 'primary'} onClick={handleClick}>
                   {label}
                 </Button>
               </Option>
             )
           })}
         </Flex>
-        <Flex alignItems="center">
-          <Option>
+        <Flex alignItems="center" >
+          <Option >
             <Input
+              style={{background: '#5ea3ebd1', boxShadow: 'unset'}}
               type="number"
               scale="lg"
               step={0.1}
@@ -121,12 +129,16 @@ const SlippageToleranceSettings = () => {
           </Option>
         </Flex>
       </Options>
+      <Text style={{ fontWeight: 400 }} fontSize="10px">
+          Your transaction will revert if the price changes unfavorably by more than this percentage.
+        </Text>
       {error && (
         <Text mt="8px" color="failure">
           {error}
         </Text>
       )}
     </StyledSlippageToleranceSettings>
+    </div>
   )
 }
 
