@@ -54,7 +54,8 @@ export default function App() {
     align-items: center;
     z-index: 1;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-position: center top;
+    background-size: auto;
   `)
   // const apiKey = `${process.env.REACT_APP_CROWDIN_APIKEY}`
   // const projectId = parseInt(`${process.env.REACT_APP_CROWDIN_PROJECTID}`)
