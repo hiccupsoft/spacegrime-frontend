@@ -1,7 +1,7 @@
 import { CurrencyAmount, JSBI, Token, Trade } from '@pancakeswap-libs/sdk'
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { ArrowDown } from 'react-feather'
-import { CardBody, ArrowDownIcon, Button, IconButton, Text } from 'spacegrime-uikit'
+import { CardBody, ArrowDownIcon, Button, IconButton, Text, Flex } from 'spacegrime-uikit'
 import { ThemeContext } from 'styled-components'
 import AddressInputPanel from 'components/AddressInputPanel'
 import Card, { GreyCard } from 'components/Card'
@@ -489,6 +489,11 @@ const Swap = () => {
             </BottomGrouping>
           </CardBody>
         </Wrapper>
+        <div>
+          <Text fontSize="11px" style={{fontWeight: 500}} >We will automatically add the logos of the tokens with TVL(BNB or SPACEGRIME pair) higher than $1 million to the exchange list.
+          <span style={{color:"#f932c2"}}>Submit your contract address and logo here.</span>
+          </Text>
+        </div>
       </AppBody>
       <AdvancedSwapDetailsDropdown trade={trade} />
     </>
