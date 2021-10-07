@@ -55,7 +55,7 @@ export default function App() {
     z-index: 1;
     background-repeat: no-repeat;
     background-position: center top;
-    background-size: auto;
+    background-size: cover;
   `)
   // const apiKey = `${process.env.REACT_APP_CROWDIN_APIKEY}`
   // const projectId = parseInt(`${process.env.REACT_APP_CROWDIN_PROJECTID}`)
