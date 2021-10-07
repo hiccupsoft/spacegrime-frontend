@@ -293,7 +293,7 @@ const Swap = () => {
         transactionType={syrupTransactionType}
         onConfirm={handleConfirmSyrupWarning}
       />
-      <div style={{display: 'flex'}}>
+      <div style={{display: 'flex', position: 'relative'}}>
         <CardNav />
         <PageHeader title="Exchange" description="Trade tokens in an instant"/>
       </div>

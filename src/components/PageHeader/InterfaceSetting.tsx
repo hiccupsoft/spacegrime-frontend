@@ -30,8 +30,8 @@ const InterfaceSetting = () => {
       <NewContent>
         <div>
           <Text fontSize="18px">Toggle Expert Mode</Text>
-          <Text fontSize="10x">Bypasses confirmation modals and allow high slippage trades.</Text>
-          <Text fontSize="10x" style={{ fontWeight: 600 }} color="#ED4B9E">
+          <Text fontSize="10px">Bypasses confirmation modals and allow high slippage trades.</Text>
+          <Text fontSize="10px" style={{ fontWeight: 600 }} color="#ED4B9E">
             Use at your own risk.
           </Text>
         </div>
@@ -42,7 +42,7 @@ const InterfaceSetting = () => {
       <NewContent>
         <div style={{width: '100%'}}>
           <Text fontSize="18px">Disable Multihops</Text>
-          <Text fontSize="10x">Restrict swaps to direct paires only.</Text>
+          <Text fontSize="10px">Restrict swaps to direct paires only.</Text>
         </div>
         <div>
           <Toggle />

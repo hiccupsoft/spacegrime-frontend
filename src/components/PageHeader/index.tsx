@@ -36,8 +36,8 @@ const StyledPageHeader = styled.div`
   // padding: 24px;
   // text-align: center;
   position: absolute;
-    top: 235px;
-    right: 409px;
+  top: 117px;
+  right: 134px;
 `
 
 const Details = styled.div`
@@ -60,10 +60,10 @@ const PageHeader = ({ title, description, children }: PageHeaderProps) => {
           )}
         </Details> */}
         <IconButton variant="text" onClick={onPresentSettings} title="Settings">
-          <img src={SettingIcon} alt="" width="42%" />
+          <img src={SettingIcon} alt="" width="20px" />
         </IconButton>
         <IconButton variant="text" onClick={onPresentRecentTransactions} title="Recent transactions">
-          <img src={RecentIcon} alt="" width="42%" />
+          <img src={RecentIcon} alt="" width="20px" />
         </IconButton>
       </div>
       {children && <Text mt="16px">{children}</Text>}

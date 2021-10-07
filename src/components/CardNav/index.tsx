@@ -16,6 +16,7 @@ const StyledNav = styled.div`
 const StyledUl = styled.div`
   list-style-type: none;
   text-align: center;
+  padding-right: 109px;
 `
 const StyledLi = styled.div`
   display: inline-block;

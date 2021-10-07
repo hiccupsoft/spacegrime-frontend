@@ -5,6 +5,10 @@ import { getEtherscanLink } from 'utils'
 import { isTransactionRecent, useAllTransactions } from 'state/transactions/hooks'
 import { TransactionDetails } from 'state/transactions/reducer'
 import Loader from 'components/Loader'
+import  styled  from "styled-components"
+import NewWindowLogo from "../../assets/Logo/Open in New Window.png"
+import SuccessfullLogo from "../../assets/Logo/Successful Transaction.png"
+import UnsuccessfulLogo from "../../assets/Logo/Unsuccessful Transaction.png"
 
 type RecentTransactionsModalProps = {
   onDismiss?: () => void
@@ -43,6 +47,17 @@ const RecentTransactionsModal = ({ onDismiss = defaultOnDismiss }: RecentTransac
     return 1;
   };
 
+  const StyledTD = styled.td`
+  padding: 13px 6px;
+  font-size: 15px;
+  `
+
+  const StyledTable = styled.table`
+    background: #5fb4f5db;
+    color: rgb(255, 255, 255);
+    border-radius: 25px;
+  `
+
   return (
     <Modal title="Recent Transactions" onDismiss={onDismiss} onBack={handleOnBack} hideCloseButton>
       <Text color="#ED4B9E" fontSize="40px" style={{ fontWeight: 400,textAlign: 'right' }}>
@@ -63,9 +78,33 @@ const RecentTransactionsModal = ({ onDismiss = defaultOnDismiss }: RecentTransac
       )}
       {account && chainId && sortedRecentTransactions.length === 0 && (
         <Flex justifyContent="center" flexDirection="column" alignItems="center">
-          <Text mb="8px" bold>
+          <StyledTable>
+            <tbody>
+             <tr>
+             <StyledTD>SWAP 600000000000 GRIMAX FOR 1 BNB </StyledTD>
+              <StyledTD><img src={NewWindowLogo} alt="" /></StyledTD>
+              <StyledTD><img src={SuccessfullLogo} alt="" /></StyledTD>
+             </tr>
+             <tr style={{background: '#74c8f999'}}>
+             <StyledTD>SWAP 600000000000 GRIMAX FOR 1 BNB </StyledTD>
+              <StyledTD><img src={NewWindowLogo} alt="" /></StyledTD>
+              <StyledTD><img src={SuccessfullLogo} alt="" /></StyledTD>
+             </tr>
+             <tr>
+             <StyledTD>SWAP 600000000000 GRIMAX FOR 1 BNB </StyledTD>
+              <StyledTD><img src={NewWindowLogo} alt="" /></StyledTD>
+              <StyledTD><img src={SuccessfullLogo} alt="" /></StyledTD>
+             </tr>
+             <tr style={{background: '#74c8f999'}}>
+             <StyledTD>SWAP 600000000000 GRIMAX FOR 1 BNB </StyledTD>
+              <StyledTD><img src={NewWindowLogo} alt="" /></StyledTD>
+              <StyledTD><img src={SuccessfullLogo} alt="" /></StyledTD>
+             </tr>
+            </tbody>
+          </StyledTable>
+          {/* <Text mb="8px" bold>
             No recent transactions
-          </Text>
+          </Text> */}
           {/* <Button variant="tertiary" size="sm" onClick={onDismiss}>
             Close
           </Button> */}
