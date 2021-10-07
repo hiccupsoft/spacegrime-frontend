@@ -393,8 +393,8 @@ const Swap = () => {
                     )}
                     {allowedSlippage !== INITIAL_ALLOWED_SLIPPAGE && (
                       <RowBetween align="center">
-                        <Text fontSize="14px">Slippage Tolerance</Text>
-                        <Text fontSize="14px">{allowedSlippage / 100}%</Text>
+                        <Text fontSize="18px" style={{fontWeight: 500}}>Slippage Tolerance</Text>
+                        <Text fontSize="18px" color="#f932c2" style={{fontWeight: 500}}>{allowedSlippage / 100}%</Text>
                       </RowBetween>
                     )}
                   </AutoColumn>

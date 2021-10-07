@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import { Heading, IconButton, Text, Flex, useModal } from 'spacegrime-uikit'
+import { useSelector } from "react-redux";
 import SettingsModal from './SettingsModal'
 import RecentTransactionsModal from './RecentTransactionsModal'
 import RecentIcon from "../../assets/Logo/Most Recent (Active).png"
@@ -37,7 +38,6 @@ const StyledPageHeader = styled.div`
   // text-align: center;
   position: absolute;
   top: 117px;
-  right: 134px;
 `
 
 const Details = styled.div`
@@ -47,9 +47,9 @@ const Details = styled.div`
 const PageHeader = ({ title, description, children }: PageHeaderProps) => {
   const [onPresentSettings] = useModal(<SettingsModal />)
   const [onPresentRecentTransactions] = useModal(<RecentTransactionsModal />)
-
+  const mode = useSelector<any>((state) => state.user.isDarkMode );
   return (
-    <StyledPageHeader>
+    <StyledPageHeader style={{    right: `${mode ?  '274px' : '134px'}`}}>
       <div style={{display: 'flex'}}>
         {/* <Details>
           <Heading mb="8px">{title}</Heading>

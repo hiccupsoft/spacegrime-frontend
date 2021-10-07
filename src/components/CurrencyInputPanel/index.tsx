@@ -133,7 +133,7 @@ export default function CurrencyInputPanel({
             </RowBetween>
           </LabelRow>
         )}
-        <Text style={{color: '#6f7099',padding: '0px 16px', textAlign: 'left'}}>Input</Text>
+        <Text style={{color: 'primary',padding: '0px 16px', textAlign: 'left'}}>Input</Text>
         <InputRow style={hideInput ? { padding: '0', borderRadius: '8px' } : {}} selected={disableCurrencySelect}>
           {!hideInput && (
             <>

@@ -28,7 +28,7 @@ const StyledLi = styled.div`
 const Nav = ({ activeIndex = 0 }: { activeIndex?: number }) => {
   const mode = useSelector<any>((state) => state.user.isDarkMode );
   return (<StyledNav>
-      <img src={`${mode ? LightLogo : DarkLogo}`} alt="" width={`${mode ? '50%' : '35%'}`} style={{marginBottom: '80px'}}/>
+      <img src={`${mode ? LightLogo : DarkLogo}`} alt="" width={`${mode ? '30%' : '35%'}`} style={{marginBottom: '80px'}}/>
       <StyledUl>
         <StyledLi style={{ color: `${activeIndex === 0 && '#7f7fa2'}`}}>
           <Link to="/swap">SWAP</Link>
