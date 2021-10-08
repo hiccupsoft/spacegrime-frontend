@@ -38,6 +38,10 @@ const StyledPageHeader = styled.div`
   // text-align: center;
   position: absolute;
   top: 117px;
+  @media screen and (max-width: 450px) {
+    right: 70px !important;
+    top: 111px !important;
+  }
 `
 
 const Details = styled.div`
