@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-boolean-value */
 import { CurrencyAmount, JSBI, Token, Trade } from '@pancakeswap-libs/sdk'
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { ArrowDown } from 'react-feather'
@@ -35,7 +36,6 @@ import { maxAmountSpend } from 'utils/maxAmountSpend'
 import { computeTradePriceBreakdown, warningSeverity } from 'utils/prices'
 import Loader from 'components/Loader'
 import { TranslateString } from 'utils/translateTextHelpers'
-import PageHeader from 'components/PageHeader'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import AppBody from '../AppBody'
 
@@ -293,9 +293,8 @@ const Swap = () => {
         transactionType={syrupTransactionType}
         onConfirm={handleConfirmSyrupWarning}
       />
-      <div style={{display: 'flex', position: 'relative'}}>
-        <CardNav />
-        <PageHeader title="Exchange" description="Trade tokens in an instant"/>
+      <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center !important', alignItems: 'center'}} >
+        <CardNav Items={true} />
       </div>
       <AppBody>
         <Wrapper id="swap-page">

@@ -4,11 +4,12 @@ import useI18n from 'hooks/useI18n'
 export interface TranslatedTextProps {
   translationId: number
   children: string
+  style?: any
 }
 
-const TranslatedText = ({ translationId, children }: TranslatedTextProps) => {
+const TranslatedText = ({ translationId, children, style }: TranslatedTextProps) => {
   const TranslateString = useI18n()
-  return <>{TranslateString(translationId, children)}</>
+  return <div style={style}>{TranslateString(translationId, children)}</div>
 }
 
 export default TranslatedText

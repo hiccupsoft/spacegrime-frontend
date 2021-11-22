@@ -62,7 +62,17 @@ export default function Pool() {
   const CustomNavDiv = styled.div`
     display: flex;
     align-item: center;
+    flex-direction: column;
   `
+  const mode = useSelector<any>((state) => state.user.isDarkMode );
+
+  const getButtonShadow = () => {
+    if(!mode)
+      return{boxShadow: '10px 12px 30px -6px rgba(15,15,110, 0.5)', background: '#dadbe6', border: 'none'}
+    return {boxShadow: 'rgba(29,29,112,.97) 2px 0px 17px 10px', background: 'rgb(58,57,150)', border: 'none'}
+  }
+
+  
 
   return (
     <>
@@ -71,7 +81,11 @@ export default function Pool() {
           <CardNav activeIndex={1} />
           {/* <PageHeader title="" description="" /> */}
         </CustomNavDiv>
-        <Button id="join-pool-button" as={Link} to="/add/ETH" style={{    background: '#1c8ffe', borderRadius: '50px'}}>
+        <Button 
+          id="join-pool-button" 
+          as={Link} to="/add/ETH" 
+          style={{background: '#1c8ffe', borderRadius: '50px', padding: '20px', marginBottom: '20px'}}
+        >
           <TranslatedText translationId={100}>ADD LIQUIDITY</TranslatedText>
         </Button>
         <AutoColumn gap="lg" justify="center">
@@ -79,7 +93,7 @@ export default function Pool() {
             <AutoColumn gap="12px" style={{ width: '100%' }}>
               <RowBetween padding="0 8px">
                 <Text color='#7f7fa2' style={{textAlign: 'center'}}>
-                  <TranslatedText translationId={102}>Your Liquidity</TranslatedText>
+                  <TranslatedText translationId={102} style={{marginLeft: '-35px'}} >Your Liquidity</TranslatedText>
                 </Text>
                 <Question
                   text={TranslateString(
@@ -90,7 +104,7 @@ export default function Pool() {
               </RowBetween>
 
               {!account ? (
-                <LightCard style={{    background: '#dadbe6', border: 'none'}} >
+                <LightCard style={getButtonShadow()} >
                   <Body style={{color: '#78789b'}} textAlign="center">
                     Connect to a wallet to view your liquidity.
                   </Body>

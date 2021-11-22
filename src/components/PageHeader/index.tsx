@@ -36,12 +36,12 @@ const StyledPageHeader = styled.div`
   // border-bottom: 1px solid ${({ theme }) => theme.colors.borderColor};
   // padding: 24px;
   // text-align: center;
-  position: absolute;
-  top: 127px;
-  @media screen and (max-width: 450px) {
+  /* position: absolute;
+  top: 127px; */
+  /* @media screen and (max-width: 450px) {
     right: 70px !important;
     top: 111px !important;
-  }
+  } */
 `
 
 const Details = styled.div`
@@ -53,7 +53,7 @@ const PageHeader = ({ title, description, children }: PageHeaderProps) => {
   const [onPresentRecentTransactions] = useModal(<RecentTransactionsModal />)
   const mode = useSelector<any>((state) => state.user.isDarkMode );
   return (
-    <StyledPageHeader style={{    right: `${mode ?  '274px' : '134px'}`}}>
+    <StyledPageHeader>
       <div style={{display: 'flex'}}>
         {/* <Details>
           <Heading mb="8px">{title}</Heading>
