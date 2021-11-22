@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-duplicate-props */
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Input, Text } from 'spacegrime-uikit'
@@ -58,14 +59,14 @@ const TransactionDeadlineSetting = () => {
     <StyledTransactionDeadlineSetting>
       <Label>
         <Text style={{ fontWeight: 400 }}>
-          <TranslatedText translationId={90}>Transaction deadline</TranslatedText>
+          <TranslatedText translationId={90} style={{color: "rgb(62,67,119)"}}>Transaction deadline</TranslatedText>
         </Text>
       </Label>
       <Field>
-        <Input type="number" step="1" min="1" value={value} onChange={handleChange} />
-        <Text>Minutes</Text>
+        <Input type="number" step="1" min="1" value={value} onChange={handleChange} style={{background: 'rgba(94, 163, 235, 0.82)', boxShadow: 'unset'}}/>
+        <Text style={{color: "rgb(62,67,119)"}}>Minutes</Text>
       </Field>
-      <Text style={{ fontWeight: 400 }} fontSize="10px">
+      <Text style={{ fontWeight: 400, color: "rgb(62,67,119)" }} fontSize="10px" >
         Your transaction will revert if it is pending for more than this long.
       </Text>
       {error && (

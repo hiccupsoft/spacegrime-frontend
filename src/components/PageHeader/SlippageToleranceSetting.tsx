@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable react/self-closing-comp */
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Button, Flex, Input, Text } from 'spacegrime-uikit'
@@ -93,8 +95,8 @@ const SlippageToleranceSettings = () => {
     <StyledSlippageToleranceSettings>
       <Label>
         <Text style={{ fontWeight: 400 }}>
-          <TranslatedText translationId={88}>Slippage tolerance</TranslatedText>
         </Text>
+          <TranslatedText translationId={88} style={{color: "rgb(62,67,119)"}} >Slippage tolerance</TranslatedText>
       </Label>
       <Options>
         <Flex mb={['8px', 0]} mr={[0, '8px']}>
@@ -129,7 +131,7 @@ const SlippageToleranceSettings = () => {
           </Option>
         </Flex>
       </Options>
-      <Text style={{ fontWeight: 400 }} fontSize="10px">
+      <Text style={{ fontWeight: 400 }} fontSize="10px" color="rgb(62,67,119)">
           Your transaction will revert if the price changes unfavorably by more than this percentage.
         </Text>
       {error && (
