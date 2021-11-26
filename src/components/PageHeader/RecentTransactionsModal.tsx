@@ -1,5 +1,6 @@
+/* eslint-disable import/no-cycle */
 import React, { useMemo } from 'react'
-import { CheckmarkCircleIcon, ErrorIcon, Flex, LinkExternal, Text, Modal, Button } from 'spacegrime-uikit'
+import { CheckmarkCircleIcon, ErrorIcon, Flex, LinkExternal, Text, Modal, Button, useModal } from 'spacegrime-uikit'
 import { useActiveWeb3React } from 'hooks'
 import { getEtherscanLink } from 'utils'
 import { isTransactionRecent, useAllTransactions } from 'state/transactions/hooks'
@@ -8,7 +9,7 @@ import Loader from 'components/Loader'
 import  styled  from "styled-components"
 import NewWindowLogo from "../../assets/Logo/Open in New Window.png"
 import SuccessfullLogo from "../../assets/Logo/Successful Transaction.png"
-import UnsuccessfulLogo from "../../assets/Logo/Unsuccessful Transaction.png"
+import SettingsModal from './SettingsModal'
 
 type RecentTransactionsModalProps = {
   onDismiss?: () => void
@@ -57,9 +58,15 @@ const RecentTransactionsModal = ({ onDismiss = defaultOnDismiss }: RecentTransac
     color: rgb(255, 255, 255);
     border-radius: 25px;
   `
+const [onSettingTransactions] = useModal(<SettingsModal />)
+const onClickIcon = (id: string) => {
+  if(id === "setting") {
+    onSettingTransactions();
+  }
+}
 
   return (
-    <Modal title="Recent Transactions" onDismiss={onDismiss} onBack={handleOnBack} hideCloseButton>
+    <Modal title="Recent Transactions" onDismiss={onDismiss} onBack={handleOnBack} hideCloseButton onClickIcon={onClickIcon}>
       <Text color="#ED4B9E" fontSize="40px" style={{ fontWeight: 400,textAlign: 'right' }}>
         Recent
       </Text>
